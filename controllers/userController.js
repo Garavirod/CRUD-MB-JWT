@@ -10,8 +10,8 @@ db.sync(); // Migrate tables if do not exist
 controllers.register = async(req, res) => {
     const today = new Date();
     const userData = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        first_name: req.body.name,
+        last_name: req.body.lastname,
         email: req.body.email,
         rol: req.body.rol,
         password: req.body.password,
@@ -30,7 +30,7 @@ controllers.register = async(req, res) => {
                         let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                             expiresIn: 1440,
                         });
-                        res.json({ token: token });
+                        res.json({ success: true, token: token });
                     })
                     .catch((err) => {
                         res.send("Error >:" + err);
@@ -52,9 +52,9 @@ controllers.login = async(req, res) => {
                 let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 1440,
                 });
-                res.json({ token: token, data: user });
+                res.json({ success: true, token: token, data: user });
             } else {
-                res.send('User does not exist !')
+                res.json({ success: false, message: "user not exist" });
             }
         })
         .catch((err) => {

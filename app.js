@@ -40,7 +40,7 @@ app.listen(port, host, () => {
     console.log("Server works!!");
 });
 
-app.set('puerto', process.env.PORT || 5000);
-app.listen(app.get('puerto'), () => {
-    console.log('Example app listening on port ' + app.get('puerto'));
-});
+// app.set('puerto', process.env.PORT || 5000);
+// app.listen(app.get('puerto'), () => {
+//     console.log('Example app listening on port ' + app.get('puerto'));
+// });

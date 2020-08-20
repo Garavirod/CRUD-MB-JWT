@@ -10,6 +10,14 @@ app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Static
+app.use(express.static(path.join(__dirname, 'public'))); //path/public
+
+
+// API path
+const users = require('./routes/userRoutes');
+app.use("/users", users);
+
 // Definir un domino para cibir peticiones
 const whiteList = [process.env.FRONTEND_URL];
 const corsOptions = {
@@ -26,12 +34,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.use(express.static(path.join(__dirname, 'public'))); //path/public
 
-
-// API path
-const users = require('./routes/userRoutes');
-app.use("/users", users);
 
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 5000;

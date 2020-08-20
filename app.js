@@ -14,10 +14,10 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'public'))); //path/public
 
-// Root
-app.get('/', (req, res) => {
-    res.send('Hello World from root!');
-});
+// // Root
+// app.get('/', (req, res) => {
+//     res.send('Hello World from root!');
+// });
 
 
 // API path

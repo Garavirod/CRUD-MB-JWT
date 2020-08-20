@@ -12,3 +12,5 @@ const sequelize = new Sequelize("sigesmet_MB", "sigesmet_x", "root1", {
 });
 
 module.exports = sequelize;
+
+heroku config: add DATABASE_URL = mysql2: //sigesmet_x:root1@185.146.30.92/sigesmet_MB --app heroku-app-name
